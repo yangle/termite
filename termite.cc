@@ -954,6 +954,7 @@ gboolean key_press_cb(VteTerminal *vte, GdkEventKey *event, keybind_info *info) 
 #else
                 vte_terminal_copy_clipboard(vte);
 #endif
+                exit_command_mode(vte, &info->select);
                 break;
             case GDK_KEY_slash:
                 overlay_show(&info->panel, overlay_mode::search, vte);
