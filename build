@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Build the patched vte and then termite.
+# (Adapted from Arch's PKGBUILD for termite.)
+
+vte_static=$(realpath vte)/static
+
+cd vte
+NOCONFIGURE=1 ./autogen.sh
+./configure \
+  --prefix="$vte_static" \
+  --enable-static \
+  --disable-shared \
+  enable_introspection=no \
+  enable_vala=no \
+  --disable-gtk-doc \
+  --disable-glade-catalogue
+make -C src sources install-exec install-data -j 1
+make install-pkgconfigDATA
+
+cd ..
+PKG_CONFIG_PATH="$vte_static/lib/pkgconfig:$PKG_CONFIG_PATH" make
