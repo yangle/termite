@@ -1,3 +1,7 @@
 [submodule "util"]
 	path = util
 	url = https://github.com/thestinger/util.git
+[submodule "vte"]
+	path = vte
+	url = https://github.com/yangle/vte.git
+	branch = vte-0-56
