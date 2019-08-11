@@ -1676,7 +1676,6 @@ int main(int argc, char **argv) {
     if (directory) {
         if (chdir(directory) == -1) {
             perror("chdir");
-            return EXIT_FAILURE;
         }
         g_free(directory);
     }
