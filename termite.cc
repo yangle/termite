@@ -561,6 +561,8 @@ static void move(VteTerminal *vte, select_info *select, long col, long row) {
     long cursor_col, cursor_row;
     vte_terminal_get_cursor_position(vte, &cursor_col, &cursor_row);
 
+    cursor_row = clamp(cursor_row, top_row(vte), bottom_row(vte));
+
     VteCursorBlinkMode mode = vte_terminal_get_cursor_blink_mode(vte);
     vte_terminal_set_cursor_blink_mode(vte, VTE_CURSOR_BLINK_OFF);
 
